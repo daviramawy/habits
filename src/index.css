@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-headline: "Cinzel", serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: "Inter", sans-serif;
+}
+
+/* Custom retro pixel rendering utility */
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Genuine 16-bit dithered block styling */
+.xp-block {
+  background: repeating-linear-gradient(
+    45deg,
+    #EEB76B,
+    #EEB76B 5px,
+    #E2703A 5px,
+    #E2703A 10px
+  );
+  box-shadow: inset -4px -4px 0px 0px #9C3D54;
+  border: 2px solid #310B0B;
+}
+
+/* Custom diamond corners decoration */
+.polygon-diamond {
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+/* Soft transition effects */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  user-select: none;
+  background-color: #120303;
+}

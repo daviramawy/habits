@@ -1,0 +1,117 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User account game state data, XP, stars, streaks, and equipment.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The private authenticated UID of the user."
+        },
+        "email": {
+          "type": "string",
+          "description": "Authenticated email of the user."
+        },
+        "xp": {
+          "type": "number",
+          "description": "Permanent Experience Points."
+        },
+        "stars": {
+          "type": "number",
+          "description": "Spendable currency balance."
+        },
+        "level": {
+          "type": "number",
+          "description": "The current character Level derived from XP."
+        },
+        "accessories": {
+          "type": "array",
+          "description": "Purchased items: cape, parrot, glowing_glasses, etc."
+        },
+        "equipped": {
+          "type": "array",
+          "description": "Active equipped accessories."
+        },
+        "perfectDays": {
+          "type": "number",
+          "description": "Count of perfect days."
+        },
+        "bestStreak": {
+          "type": "number",
+          "description": "Highest consecutive streak achieved overall."
+        },
+        "lastCheckedDate": {
+          "type": "string",
+          "description": "The date when habits other than today were calculated."
+        },
+        "habit1_streak": {
+          "type": "number",
+          "description": "Streak of Dance habit."
+        },
+        "habit1_lastCompleted": {
+          "type": "string",
+          "description": "Date of last completion of Dance."
+        },
+        "habit2_streak": {
+          "type": "number",
+          "description": "Streak of Writing/Research habit."
+        },
+        "habit2_lastCompleted": {
+          "type": "string",
+          "description": "Date of last completion of Writing/Research."
+        },
+        "habit3_streak": {
+          "type": "number",
+          "description": "Streak of Tennis habit."
+        },
+        "habit3_lastCompleted": {
+          "type": "string",
+          "description": "Date of last completion of Tennis."
+        }
+      },
+      "required": ["userId", "email", "xp", "stars", "level"]
+    },
+    "HabitLog": {
+      "title": "Habit Completion Log",
+      "description": "A historic record of when a habit was successfully verified and awarded.",
+      "type": "object",
+      "properties": {
+        "logId": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "habitId": {
+          "type": "string"
+        },
+        "completedDate": {
+          "type": "string",
+          "description": "Date formatted YYYY-MM-DD"
+        },
+        "timestamp": {
+          "type": "string",
+          "description": "ISO completion timestamp"
+        },
+        "xpGained": {
+          "type": "number"
+        },
+        "starsGained": {
+          "type": "number"
+        }
+      },
+      "required": ["logId", "userId", "habitId", "completedDate", "timestamp", "xpGained", "starsGained"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Persisted profile database node with high-fidelity statistics."
+    },
+    "/users/{userId}/logs/{logId}": {
+      "schema": "HabitLog",
+      "description": "Completion checklist logs for retroactive audits."
+    }
+  }
+}

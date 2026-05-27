@@ -1,0 +1,10 @@
+{
+  "name": "OverStressed",
+  "description": "A dark medieval fantasy RPG habit tracker that transforms your daily chores into epic boss battles.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
